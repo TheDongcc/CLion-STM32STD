@@ -1,0 +1,11 @@
+/.idea/
+/cmake-build-debug-mingw/*
+!/cmake-build-debug-mingw/*.elf
+!/cmake-build-debug-mingw/*.hex
+/*.cproject
+/*.mxproject
+/.project
+/*.ioc
+/*.xml
+
+
