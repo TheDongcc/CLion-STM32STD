@@ -4,13 +4,11 @@
 #include "stm32f10x.h"
 
 //KEY0端口定义
-#define KEY0            0
 #define KEY0_GPIO_CLK   RCC_APB2Periph_GPIOE
 #define KEY0_GPIO_PORT  GPIOE
 #define KEY0_GPIO_PIN   GPIO_Pin_4
 
 //KEY1端口定义
-#define KEY1            1
 #define KEY1_GPIO_CLK   RCC_APB2Periph_GPIOE
 #define KEY1_GPIO_PORT  GPIOE
 #define KEY1_GPIO_PIN   GPIO_Pin_3
