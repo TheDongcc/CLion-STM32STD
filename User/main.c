@@ -13,11 +13,9 @@ int main(){
     while (1){
 
         if (Key_Scan(KEY0_GPIO_PORT,KEY0_GPIO_PIN) == KEY_ON){
-//            while (Key_Scan(KEY0_GPIO_PORT,KEY0_GPIO_PIN) == KEY_ON);
             LED0_Toggle;
-//            delay_ms(100);
-        }else{
-
+        }else if (Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON){
+            LED1_Toggle;
         }
     }
 
