@@ -108,5 +108,6 @@ void MCO_GPIO_Config(uint8_t RCC_MCO){
     GPIOInitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA,&GPIOInitStructure);
 
+    //选择相应的时钟源进行输出
     RCC_MCOConfig(RCC_MCO);
 }
