@@ -55,6 +55,7 @@ include_directories(User/LED
         User/KEY
         User/RCC
         User/EXTI
+        User/SYSTICK
         )
 #add_definitions(-DUSE_HAL_DRIVER -DSTM32F103xE)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD)
