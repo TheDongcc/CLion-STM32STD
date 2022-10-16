@@ -23,6 +23,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "exti.h"
+#include "led.h"
+#include "delay.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -134,6 +137,14 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+}
+
+void KEY0_IRQHandler(){
+    if (EXTI_GetITStatus(KEY0_INT_EXTI_LINE) == SET){
+        LED0_Toggle;
+        delay_ms(200);
+        EXTI_ClearITPendingBit(KEY0_INT_EXTI_LINE);
+    }
 }
 
 /******************************************************************************/

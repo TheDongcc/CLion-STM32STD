@@ -54,6 +54,7 @@ include_directories(CMSIS/Inc STM32F10x_StdPeriph_Driver/inc User SYSTEM/Inc)
 include_directories(User/LED
         User/KEY
         User/RCC
+        User/EXTI
         )
 #add_definitions(-DUSE_HAL_DRIVER -DSTM32F103xE)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD)
