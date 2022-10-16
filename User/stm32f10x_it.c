@@ -147,6 +147,13 @@ void KEY0_IRQHandler(){
     }
 }
 
+void KEY1_IRQHandler(){
+    if (EXTI_GetITStatus(KEY1_INT_EXTI_LINE) == SET){
+        LED1_Toggle;
+        delay_ms(200);
+        EXTI_ClearITPendingBit(KEY1_INT_EXTI_LINE);
+    }
+}
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
