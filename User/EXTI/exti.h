@@ -13,13 +13,16 @@
 #define KEY0_INT_EXTI_IRQ           EXTI4_IRQn
 #define KEY0_IRQHandler             EXTI4_IRQHandler
 
+//KEY1端口定义
+#define KEY1_INT_CLK                RCC_APB2Periph_GPIOE
+#define KEY1_INT_PORT               GPIOE
+#define KEY1_INT_PIN                GPIO_Pin_3
+#define KEY1_INT_EXTI_PORTSOURCE    GPIO_PortSourceGPIOE
+#define KEY1_INT_EXTI_PINSOURCE     GPIO_PinSource3
+#define KEY1_INT_EXTI_LINE          EXTI_Line3
+#define KEY1_INT_EXTI_IRQ           EXTI3_IRQn
+#define KEY1_IRQHandler             EXTI3_IRQHandler
+
 void EXTI_Key_Config();
-
-
-
-
-
-
-
 
 #endif

@@ -2,6 +2,7 @@
 
 // NVIC配置函数
 static void EXTI_NVIC_Config(){
+    /*按键0的NVIC配置*/
     NVIC_InitTypeDef NVIC_InitStruct;
     // 设置NVIC优先级分组
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
@@ -16,6 +17,14 @@ static void EXTI_NVIC_Config(){
     NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 
     // NVIC初始化
+    NVIC_Init(&NVIC_InitStruct);
+
+    /*按键1的NVIC配置*/
+    NVIC_InitStruct.NVIC_IRQChannel = KEY1_INT_EXTI_IRQ;
+    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 1;
+    NVIC_InitStruct.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+
     NVIC_Init(&NVIC_InitStruct);
 }
 
@@ -50,6 +59,22 @@ void EXTI_Key_Config(){
     // 使能EXTI线
     EXTI_InitStruct.EXTI_LineCmd = ENABLE;
     // 根据结构体，初始化EXTI
+    EXTI_Init(&EXTI_InitStruct);
+
+
+    /*按键1的EXTI配置*/
+    RCC_APB2PeriphClockCmd(KEY1_INT_CLK,ENABLE);
+    GPIOInitStructure.GPIO_Pin = KEY1_INT_PIN;
+    GPIOInitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIOInitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+    GPIO_Init(KEY1_INT_PORT,&GPIOInitStructure);
+
+    GPIO_EXTILineConfig(KEY1_INT_EXTI_PORTSOURCE,KEY1_INT_EXTI_PINSOURCE);
+    EXTI_InitStruct.EXTI_Line = KEY1_INT_EXTI_LINE;
+    EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Falling;
+    EXTI_InitStruct.EXTI_LineCmd = ENABLE;
+
     EXTI_Init(&EXTI_InitStruct);
 
 }
