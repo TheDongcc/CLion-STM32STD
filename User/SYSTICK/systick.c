@@ -3,7 +3,7 @@
 static uint32_t E_us = 0;
 static uint32_t E_ms = 0;
 
-/*SysTick初始化函数*/
+/* SysTick初始化函数 */
 void Delay_Init(){
     // 选择systick的时钟源为HCLK
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);

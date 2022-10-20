@@ -1,5 +1,6 @@
 #include "key.h"
 #include "delay.h"
+#include "systick.h"
 
 void KEY_GPIO_Init(){
     //创建GPIO初始化所需的结构体
@@ -31,7 +32,8 @@ void KEY_GPIO_Init(){
 uint8_t Key_Scan(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin){
     if (GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON){
         while (GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON){
-            delay_ms(1);
+//            delay_ms(1);
+            Delay_ms(1);
         }
         return KEY_ON;
     } else{
