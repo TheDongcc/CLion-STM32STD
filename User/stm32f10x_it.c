@@ -26,6 +26,8 @@
 #include "exti.h"
 #include "led.h"
 #include "delay.h"
+#include "systick.h"
+#include "USART/usart.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -137,6 +139,15 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+}
+
+void DEBUG_USART_IRQHandler(){
+    __IO uint8_t Recv;
+    if(USART_GetITStatus(DEBUG_USARTx,USART_IT_RXNE) != RESET)
+    {
+        Recv = USART_ReceiveData(DEBUG_USARTx);
+        USART_SendData(DEBUG_USARTx,Recv);
+    }
 }
 
 void KEY0_IRQHandler(){
