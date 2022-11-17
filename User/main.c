@@ -1,5 +1,4 @@
 #include "stm32f10x.h"
-#include "delay.h"
 #include "led.h"
 #include "key.h"
 #include "sys.h"
@@ -7,19 +6,33 @@
 #include "exti.h"
 #include "systick.h"
 #include "USART/usart.h"
-
+#include "basic_tim.h"
+#include "general_tim.h"
 
 void InitAll();
+//__IO uint32_t time = 0;
+////int mode = 0;
+__IO uint32_t val = 500;
+int dir = 1;
 
-int main(){
+int main() {
 
     InitAll();
+    GENERAL_TIM_Init();
+    Change_Period(50);
+    Change_Pluse(2.5);
 
-    while(1){
+    GPIO_InitTypeDef Cs;
+    Cs.GPIO_Pin = GPIO_Pin_7;
+    Cs.GPIO_Mode = GPIO_Mode_Out_PP;
+    Cs.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB,&Cs);
 
+//    Change_Pluse(val);
+
+    while (1) {
 
     }
-
 }
 
 void InitAll(){
@@ -30,7 +43,8 @@ void InitAll(){
 //    HSE_SetSysClk(RCC_PLLMul_9);    //设置HSE时钟
 //    HSI_SetSysClk(RCC_PLLMul_16);   //设置HSI时钟
 //    MCO_GPIO_Config(RCC_MCO_HSE);   //MCO输出配置
-    USART_Config(); //串口初始化
+//    USART_Config(); //串口初始化
+
 
 }
 
@@ -38,3 +52,5 @@ void InitAll(){
 //{
 //    while(1);
 //}
+
+

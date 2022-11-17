@@ -57,6 +57,8 @@ include_directories(User/LED
         User/EXTI
         User/SYSTICK
         User/USART
+        User/TIM/BasicTim
+        User/TIM/GeneralTim
         )
 #add_definitions(-DUSE_HAL_DRIVER -DSTM32F103xE)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD)

@@ -28,6 +28,9 @@
 #include "delay.h"
 #include "systick.h"
 #include "USART/usart.h"
+#include "basic_tim.h"
+#include "general_tim.h"
+
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -139,6 +142,20 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+}
+
+void GENERAL_TIM_IRQHandler(){
+    if (TIM_GetITStatus(GENERAL_TIM,TIM_IT_Update) != RESET){
+//        time++;
+        TIM_ClearITPendingBit(GENERAL_TIM,TIM_IT_Update);
+    }
+}
+
+void BASIC_TIM_IRQHandler(){
+    if (TIM_GetITStatus(BASIC_TIM,TIM_IT_Update) != RESET){
+//        time++;
+        TIM_ClearITPendingBit(BASIC_TIM,TIM_IT_Update);
+    }
 }
 
 void DEBUG_USART_IRQHandler(){
